@@ -1,2 +1,2 @@
 # 2017-IROC2
-This is the code for the West Coast drive.
+This is the repository for the code for the West Coast Drive, robot 2.
