@@ -1,39 +1,70 @@
 package org.usfirst.frc.team5338.robot;
 
-import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.Joystick;
 
-import org.usfirst.frc.team5338.robot.commands.ExampleCommand;
-
-/**
- * This class is the glue that binds the controls on the physical operator
- * interface to the commands and command groups that allow control of the robot.
- */
 public class OI {
-	//// CREATING BUTTONS
-	// One type of button is a joystick button which is any button on a
-	//// joystick.
-	// You create one by telling it which joystick it's on and which button
-	// number it is.
-	// Joystick stick = new Joystick(port);
-	// Button button = new JoystickButton(stick, buttonNumber);
+	private final Joystick joyL = new Joystick(0);
+	private final Joystick joyR = new Joystick(1);
 
-	// There are a few additional built in buttons you can use. Additionally,
-	// by subclassing Button you can create custom triggers and bind those to
-	// commands the same as any other Button.
+	public enum Button {
+		TEST1, TEST2
+	}
 
-	//// TRIGGERING COMMANDS WITH BUTTONS
-	// Once you have a button, it's trivial to bind it to a button in one of
-	// three ways:
+	public OI() {
+	}
 
-	// Start the command when the button is pressed and let it run the command
-	// until it is finished as determined by it's isFinished method.
-	// button.whenPressed(new ExampleCommand());
+	public Joystick getJoystick(int n) {
+		if (n == 0)
+			return joyL;
+		else if (n == 1)
+			return joyR;
+		else
+			return null;
+	}
 
-	// Run the command while the button is being held down and interrupt it once
-	// the button is released.
-	// button.whileHeld(new ExampleCommand());
+	public boolean get(Button button) {
+		switch (button) {
+		case TEST1:
+			return joyR.getRawButton(1);
+		case TEST2:
+			return joyL.getRawButton(1);
+		default:
+			return false;
+		}
+	}
 
-	// Start the command when the button is released and let it run the command
-	// until it is finished as determined by it's isFinished method.
-	// button.whenReleased(new ExampleCommand());
+	private double joystickDeadZone(double value) {
+		if (value > 0.05) {
+			return (value - 0.05) / 0.95;
+		} else if (value < -0.05) {
+			return (value + 0.05) / 0.95;
+		}
+		return value;
+	}
+
+	public double getLeft(String input) {
+		switch (input) {
+		case "X":
+			return joystickDeadZone(joyL.getRawAxis(1));
+		case "Y":
+			return joystickDeadZone(joyL.getRawAxis(2));
+		case "Z":
+			return joystickDeadZone(joyL.getRawAxis(3));
+		default:
+			return 0.0;
+		}
+	}
+
+	public double getRight(String input) {
+		switch (input) {
+		case "X":
+			return joystickDeadZone(joyR.getRawAxis(1));
+		case "Y":
+			return joystickDeadZone(joyR.getRawAxis(2));
+		case "Z":
+			return joystickDeadZone(joyR.getRawAxis(3));
+		default:
+			return 0.0;
+		}
+	}
 }
