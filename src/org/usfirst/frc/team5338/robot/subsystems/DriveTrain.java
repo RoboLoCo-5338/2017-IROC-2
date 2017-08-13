@@ -17,7 +17,6 @@ public class DriveTrain extends Subsystem {
 		super();
 	}
 
-	@Override
 	public void initDefaultCommand() {
 		setDefaultCommand(new TankDriveWithJoysticks());
 	}
@@ -27,5 +26,9 @@ public class DriveTrain extends Subsystem {
 	}
 
 	public void drive(double left1, double left2, double right1, double right2) {
+		LEFT1.set(left1);
+		LEFT2.set(left2);
+		RIGHT1.set(right1);
+		RIGHT2.set(right2);
 	}
 }

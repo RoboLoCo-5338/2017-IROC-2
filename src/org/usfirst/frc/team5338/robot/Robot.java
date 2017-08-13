@@ -6,24 +6,19 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 
 public class Robot extends IterativeRobot {
-
 	public static final OI oi = new OI();
 	public static final DriveTrain drivetrain = new DriveTrain();
 
-	@Override
 	public void robotInit() {
 	}
 
-	@Override
 	public void autonomousInit() {
 	}
 
-	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
 	}
 
-	@Override
 	public void teleopInit() {
 	}
 
