@@ -25,7 +25,7 @@ public class DriveTrain extends Subsystem {
 	public void drive(OI oi) {
 		double left = Robot.oi.getLeft("Y");
 		double right = Robot.oi.getRight("Y");
-		drive(-left,-left,right,right);
+		drive(-left,-left,right,right); 
 	}
 
 	public void drive(double left1, double left2, double right1, double right2) {
