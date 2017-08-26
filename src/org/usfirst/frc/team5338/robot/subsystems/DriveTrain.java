@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5338.robot.subsystems;
 
 import org.usfirst.frc.team5338.robot.OI;
+import org.usfirst.frc.team5338.robot.Robot;
 import org.usfirst.frc.team5338.robot.commands.TankDriveWithJoysticks;
 
 import com.ctre.CANTalon;
@@ -22,7 +23,9 @@ public class DriveTrain extends Subsystem {
 	}
 
 	public void drive(OI oi) {
-		// TODO
+		double left = Robot.oi.getLeft("Y");
+		double right = Robot.oi.getRight("Y");
+		drive(-left,-left,right,right);
 	}
 
 	public void drive(double left1, double left2, double right1, double right2) {
