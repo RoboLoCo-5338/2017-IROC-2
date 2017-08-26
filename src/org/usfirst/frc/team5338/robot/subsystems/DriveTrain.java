@@ -28,7 +28,7 @@ public class DriveTrain extends Subsystem {
 		drive(-left,-left,right,right); 
 	}
 
-	public void drive(double left1, double left2, double right1, double right2) {
+	public void drive(dou ble left1, double left2, double right1, double right2) {
 		LEFT1.set(left1);
 		LEFT2.set(left2);
 		RIGHT1.set(right1); 
