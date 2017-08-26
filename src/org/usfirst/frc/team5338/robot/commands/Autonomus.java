@@ -8,8 +8,10 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class Autonomus extends CommandGroup {
 
     public Autonomus() {
+    	addSequential(new moveForwardNormal());
+ 
         // Add Commands here:
-        // e.g. addSequential(new Command1());
+         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
 

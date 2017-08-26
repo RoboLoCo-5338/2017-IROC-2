@@ -1,36 +1,30 @@
-package org.usfirst.frc.team5338.robot.commands;
+  import org.usfirst.frc.team5338.robot.commands.Autonomus;
+import org.usfirst.frc.team5338.robot.subsystems.DriveTrain;
 
+import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
-
-/**
- *
- */
-public class moveForward extends Command {
-
-    public moveForward() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    }
-
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    }
-
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    }
-
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return false;
-    }
-
-    // Called once after isFinished returns true
-    protected void end() {
-    }
-
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    }
-}
+import edu.wpi.first.wpilibj.command.Scheduler;
+  
+  public class Robot extends IterativeRobot {
+  	public static final OI oi = new OI();
+  	public static final DriveTrain drivetrain = new DriveTrain();
+ 
+ 	public static final Command Autonomous = new Autonomus();
+  	public void robotInit() {
+  	}
+  
+  	public void autonomousInit() {
+ 			Autonomous.start();
+  	}
+  
+  	public void autonomousPeriodic() {
+  		Scheduler.getInstance().run();
+  	}
+  
+  	public void teleopInit() {
+ 		try {
+ 			Autonomous.cancel();
+ 		} catch (Exception e) { 
+ 		}
+  	}
+  }

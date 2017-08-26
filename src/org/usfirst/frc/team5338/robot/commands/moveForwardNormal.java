@@ -1,15 +1,18 @@
 package org.usfirst.frc.team5338.robot.commands;
 
+import org.usfirst.frc.team5338.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class moveForward extends Command {
+public class moveForwardNormal extends Command {
 
-    public moveForward() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+    public moveForwardNormal() {
+    		requires(Robot.drivetrain);
+    		setTimeout(2);
+        
     }
 
     // Called just before this Command runs the first time
@@ -22,7 +25,7 @@ public class moveForward extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return isTimedOut();
     }
 
     // Called once after isFinished returns true
