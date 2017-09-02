@@ -8,34 +8,27 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class TurnAround extends Command {
-	int seconds;
+
 	float start;
+	int angle;
+	double target;
 
     public TurnAround(int input) {
     		requires(Robot.drivetrain);
-    		seconds = input;
-		setTimeout(Math.abs(seconds));
 		start = Robot.ahrs.getYaw();
+		angle = input;
+		target = ((start - angle)+360)%360;
     }
 
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    		if(start < 0) {
-    			while(Robot.ahrs.getYaw() != (180+start)) {
-    				Robot.drivetrain.drive(0.5,-0.5);
-    			}
+    			Robot.drivetrain.drive(-0.25,0.25);
     		}
-    		else if(start > 0) {
-    			while(Robot.ahrs.getYaw() != (-180+start)) {
-    				Robot.drivetrain.drive(0.5,-0.5);
-    			}
-    		}
-    }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return isTimedOut();
+        return (Robot.ahrs.getYaw()+360)%360 > target;
     }
 
     // Called once after isFinished returns true

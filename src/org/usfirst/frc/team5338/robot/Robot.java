@@ -17,8 +17,8 @@ public class Robot extends IterativeRobot {
 	public static final DriveTrain drivetrain = new DriveTrain();
 
 	// Creates the Command object for the autonomous.
-	public static final Command Autonomous = new Autonomous();
 	public static final AHRS ahrs = new AHRS(SPI.Port.kMXP, (byte) (200));
+	public static Command Autonomous;
 
 	// Robot object constructor.
 	public void robotInit() {
@@ -28,6 +28,7 @@ public class Robot extends IterativeRobot {
 
 	// Called at the start of the autonomous activating the command.
 	public void autonomousInit() {
+		final Command Autonomous = new Autonomous();
 		Autonomous.start();
 	}
 
