@@ -6,7 +6,6 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class Move extends Command {
 	int seconds;
-
 	public Move(int input) {
 		requires(Robot.drivetrain);
 		setTimeout(Math.abs(seconds));
