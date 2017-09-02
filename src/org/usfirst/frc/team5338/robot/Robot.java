@@ -3,9 +3,13 @@ package org.usfirst.frc.team5338.robot;
 import org.usfirst.frc.team5338.robot.commands.Autonomous;
 import org.usfirst.frc.team5338.robot.subsystems.DriveTrain;
 
+import com.kauailabs.navx.frc.AHRS;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Robot extends IterativeRobot {
 	// Creates the OI and DriveTrain objects.
@@ -14,9 +18,12 @@ public class Robot extends IterativeRobot {
 
 	// Creates the Command object for the autonomous.
 	public static final Command Autonomous = new Autonomous();
+	public static final AHRS ahrs = new AHRS(SPI.Port.kMXP, (byte) (200));
 
 	// Robot object constructor.
 	public void robotInit() {
+		while (ahrs.isCalibrating() || ahrs.isMagnetometerCalibrated()) {
+		}
 	}
 
 	// Called at the start of the autonomous activating the command.
