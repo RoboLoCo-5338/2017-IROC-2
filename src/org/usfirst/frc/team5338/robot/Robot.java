@@ -15,18 +15,21 @@ public class Robot extends IterativeRobot {
 	public static final OI oi = new OI();
 	public static final DriveTrain drivetrain = new DriveTrain();
 
-	// Creates the Command object for the autonomous.
+	//Initializes the Navx
 	public static final AHRS ahrs = new AHRS(SPI.Port.kMXP, (byte) (200));
+	//Creates a Command for Autonomous
 	public static Command Autonomous;
 
 	// Robot object constructor.
 	public void robotInit() {
+		//Makes sure that the robot doesn't run any code before the navx is calibrated
 		while (ahrs.isCalibrating() || ahrs.isMagnetometerCalibrated()) {
 		}
 	}
 
 	// Called at the start of the autonomous activating the command.
 	public void autonomousInit() {
+		//Added the line below to make sure that the ahrs is used after calibration
 		final Command Autonomous = new Autonomous();
 		Autonomous.start();
 	}
