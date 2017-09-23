@@ -36,22 +36,25 @@ public class DriveTrain extends Subsystem {
 
 	// Gets joysticks input and calls the drive function with arguments.
 	public void drive(OI oi) {
+		//gets the position of both controllers
 		double left = Robot.oi.getLeft('Y');
 		double right = Robot.oi.getRight('Y');
+		//robot starts in torque mode
+		//if the maximum speed is being reached on the torque setting it switches to speed
 		if(left == 1 || right == 1) {
+			//talon power is decreased to maintain constant speed
 			LEFT1.set(0.72549277121);
 			LEFT2.set(0.72549277121);
 			RIGHT1.set(0.72549277121);
 			RIGHT2.set(0.72549277121);
+			//setting is changed
 			driveSolenoid.set(DoubleSolenoid.Value.kReverse);
 		}
 		else {
-			LEFT1.set(1);
-			LEFT2.set(1);
-			RIGHT1.set(1);
-			RIGHT2.set(1);
+			//talon power is left as is and the setting remains on speed
 			driveSolenoid.set(DoubleSolenoid.Value.kForward);
 		}
+		
 		drive(left, right);
 	}
 
