@@ -39,6 +39,7 @@ public class DriveTrain extends Subsystem {
 		//gets the position of both controllers
 		double left = Robot.oi.getLeft('Y');
 		double right = Robot.oi.getRight('Y');
+		driveSolenoid.set(DoubleSolenoid.Value.kForward);
 		//robot starts in torque mode
 		//if the maximum speed is being reached on the torque setting it switches to speed
 		if(left == 1 || right == 1) {
