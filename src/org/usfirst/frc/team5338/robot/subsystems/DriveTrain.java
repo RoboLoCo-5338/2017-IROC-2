@@ -36,15 +36,22 @@ public class DriveTrain extends Subsystem {
 
 	// Gets joysticks input and calls the drive function with arguments.
 	public void drive(OI oi) {
-		if(oi.get(OI.Button.BUTTON1)) {
-			driveSolenoid.set(DoubleSolenoid.Value.kForward);
-		}
-		else {
-			driveSolenoid.set(DoubleSolenoid.Value.kReverse);
-		}
-		
 		double left = Robot.oi.getLeft('Y');
 		double right = Robot.oi.getRight('Y');
+		if(left == 1 || right == 1) {
+			LEFT1.set(0.72549277121);
+			LEFT2.set(0.72549277121);
+			RIGHT1.set(0.72549277121);
+			RIGHT2.set(0.72549277121);
+			driveSolenoid.set(DoubleSolenoid.Value.kReverse);
+		}
+		else {
+			LEFT1.set(1);
+			LEFT2.set(1);
+			RIGHT1.set(1);
+			RIGHT2.set(1);
+			driveSolenoid.set(DoubleSolenoid.Value.kForward);
+		}
 		drive(left, right);
 	}
 
