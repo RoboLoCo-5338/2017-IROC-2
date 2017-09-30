@@ -23,7 +23,6 @@ public class TurnAround extends PIDCommand {
     		//Initializes the drivetrain in the command
     		requires(Robot.drivetrain);
     		//Gets the current angle (or direction) that the robot is facing
-		start = Robot.ahrs.getYaw();
 		angle = input;
 		//Using modulus and addition to determine the target angle (like a clock)
 		target = (start - angle);
@@ -34,6 +33,7 @@ public class TurnAround extends PIDCommand {
 			setSetpoint(target);
 		}
 		setTimeout(20);
+		
     }
 
 
@@ -51,12 +51,12 @@ public class TurnAround extends PIDCommand {
 
     // Called once after isFinished returns true
     protected void end() {
-    		Robot.drivetrain.drive(0.0, 0.0);
+    		//Robot.drivetrain.drive(0.0, 0.0);
     }
     protected double returnPIDInput() {
-    		return Robot.ahrs.getYaw();
+    		return 2.0;
     }
     protected void usePIDOutput(double output) {
-    		Robot.drivetrain.drive(-output, output);
+    		//Robot.drivetrain.drive(-output, output);
     }
 }

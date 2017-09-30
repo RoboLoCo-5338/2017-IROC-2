@@ -8,6 +8,5 @@ public class Autonomous extends CommandGroup {
 
 	public Autonomous() {
 		//Added the TurnAround command to the command group
-		addSequential(new TurnAround(180));
 	}
 }

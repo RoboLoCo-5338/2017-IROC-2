@@ -9,7 +9,7 @@ public class OI {
 
 	// Button enum definition for all usable buttons.
 	public enum Button {
-		BUTTON1, BUTTON2, BUTTON3, BUTTON4
+		SHIFTUP, SHIFTDOWN, BUTTON3, BUTTON4
 	}
 
 	// OI object constructor.
@@ -20,12 +20,12 @@ public class OI {
 	// argument.
 	public boolean get(Button button) {
 		switch (button) {
-		case BUTTON1: // Returns left joystick trigger status
-			return joyLeft.getRawButton(1);
-		case BUTTON2: // Returns right joystick trigger status
-			return joyRight.getRawButton(1);
+		case SHIFTUP: // Returns left joystick trigger status
+			return joyLeft.getRawButton(3);
+		case SHIFTDOWN: // Returns right joystick trigger status
+			return joyLeft.getRawButton(5);
 		case BUTTON3: // Returns left joystick side button status
-			return joyLeft.getRawButton(2);
+			return joyRight.getRawButton(2);
 		case BUTTON4: // Returns right joystick side button status
 			return joyRight.getRawButton(2);
 		default:
@@ -48,11 +48,11 @@ public class OI {
 	public double getLeft(Character input) {
 		switch (input) {
 		case 'X': // Gets deadzone corrected x-axis position
-			return deadZoneCorrection(joyLeft.getRawAxis(1));
+			return deadZoneCorrection(joyLeft.getRawAxis(0));
 		case 'Y': // Gets deadzone corrected y-axis position
-			return deadZoneCorrection(joyLeft.getRawAxis(2));
+			return deadZoneCorrection(joyLeft.getRawAxis(1));
 		case 'Z': // Gets deadzone corrected z-axis (rotation) position
-			return deadZoneCorrection(joyLeft.getRawAxis(3));
+			return deadZoneCorrection(joyLeft.getRawAxis(2));
 		case 'M': // Gets deadzone corrected magnitude away from origin
 			return deadZoneCorrection(joyLeft.getMagnitude());
 		case 'A': // Gets angle of joystick in radians
@@ -66,11 +66,11 @@ public class OI {
 	public double getRight(Character input) {
 		switch (input) {
 		case 'X': // Gets deadzone corrected x-axis position
-			return deadZoneCorrection(joyRight.getRawAxis(1));
+			return deadZoneCorrection(joyRight.getRawAxis(0));
 		case 'Y': // Gets deadzone corrected y-axis position
-			return deadZoneCorrection(joyRight.getRawAxis(2));
+			return deadZoneCorrection(joyRight.getRawAxis(1));
 		case 'Z': // Gets deadzone corrected z-axis (rotation) position
-			return deadZoneCorrection(joyRight.getRawAxis(3));
+			return deadZoneCorrection(joyRight.getRawAxis(2));
 		case 'M': // Gets deadzone corrected magnitude away from origin
 			return deadZoneCorrection(joyRight.getMagnitude());
 		case 'A': // Gets angle of joystick in radians

@@ -13,12 +13,12 @@ public class Move extends Command {
 	}
 
 	protected void execute() {
-		if(seconds > 0) {
+		/*if(seconds > 0) {
 			Robot.drivetrain.drive(0.25,0.25);
 		}
 		else {
 			Robot.drivetrain.drive(0,0);
-		}
+		}*/
 		
 	}
 
@@ -27,6 +27,6 @@ public class Move extends Command {
 	}
 
 	protected void end() {
-		Robot.drivetrain.drive(0.0, 0.0);
+		//Robot.drivetrain.drive(0.0, 0.0);
 	}
 }
