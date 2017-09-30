@@ -52,7 +52,7 @@ public class OI {
 		case 'Y': // Gets deadzone corrected y-axis position
 			return deadZoneCorrection(joyLeft.getRawAxis(1));
 		case 'Z': // Gets deadzone corrected z-axis (rotation) position
-			return deadZoneCorrection(joyLeft.getRawAxis(2));
+			return deadZoneCorrection(joyLeft.getRawAxis(3));
 		case 'M': // Gets deadzone corrected magnitude away from origin
 			return deadZoneCorrection(joyLeft.getMagnitude());
 		case 'A': // Gets angle of joystick in radians
@@ -70,7 +70,7 @@ public class OI {
 		case 'Y': // Gets deadzone corrected y-axis position
 			return deadZoneCorrection(joyRight.getRawAxis(1));
 		case 'Z': // Gets deadzone corrected z-axis (rotation) position
-			return deadZoneCorrection(joyRight.getRawAxis(2));
+			return deadZoneCorrection(joyRight.getRawAxis(3));
 		case 'M': // Gets deadzone corrected magnitude away from origin
 			return deadZoneCorrection(joyRight.getMagnitude());
 		case 'A': // Gets angle of joystick in radians

@@ -9,8 +9,8 @@ import com.ctre.CANTalon;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class DriveTrain extends Subsystem {
 	// Creates the four CANTalon motor controller objects.
@@ -21,7 +21,9 @@ public class DriveTrain extends Subsystem {
 	private final Compressor driveCompressor = new Compressor();
 	private final DoubleSolenoid driveSolenoid = new DoubleSolenoid(1,2);
 	RobotDrive driveTrain = new RobotDrive(LEFT1,LEFT2,RIGHT1,RIGHT2);
-
+	private boolean shift;
+	private double turn, speed, left, right;
+	
 	// DriveTrain object constructor which reverses output of backwards motors.
 	public DriveTrain() {
 		super();
@@ -29,6 +31,13 @@ public class DriveTrain extends Subsystem {
 		//LEFT2.setInverted(true);
 		driveCompressor.setClosedLoopControl(true);
 		driveCompressor.start();
+		driveSolenoid.set(DoubleSolenoid.Value.kReverse);
+		shift = false;
+		/*try {
+			SmartDashboard.putString("TYPE OF DRIVE", "ARCADEX");
+		}catch(Exception e) {
+			
+		}*/
 	}
 
 	// Sets the default command to run during teleop to joystick driving.
@@ -39,21 +48,49 @@ public class DriveTrain extends Subsystem {
 	// Gets joysticks input and calls the drive function with arguments.
 	public void drive(OI oi) {
 		//gets the position of both controllers
-		double turn = -Robot.oi.getLeft('X');
-		double speed = -Robot.oi.getLeft('Y');
+		switch(SmartDashboard.getString("TYPE OF DRIVE", "")) {
+			case "TANK":
+				left = Robot.oi.getLeft('Y')*Math.abs(Robot.oi.getLeft('Y'));
+				right = Robot.oi.getRight('Y')*Math.abs(Robot.oi.getRight('Y'));
+						
+				driveTrain.tankDrive(-left, -right);
+				break;
+				
+			case "ARCADEX":
+				 turn = -Robot.oi.getLeft('X')*Math.abs(Robot.oi.getLeft('X'));
+				 speed = -Robot.oi.getLeft('Y')*Math.abs(Robot.oi.getLeft('Y'));
+				
+				if(shift) turn *= .7;
+						
+				driveTrain.arcadeDrive(speed,turn);
+				break;
+			case "ARCADEZ":
+				 turn = -Robot.oi.getLeft('Z')*Math.abs(Robot.oi.getLeft('Z'));
+				 speed = -Robot.oi.getLeft('Y')*Math.abs(Robot.oi.getLeft('Y'));
+				
+				if(shift) turn *= .7;
+						
+				driveTrain.arcadeDrive(speed,turn);
+				break;
+			default:
+				driveTrain.tankDrive(0, 0);
+				break;
+			
+			
+		}
 		
-		driveTrain.arcadeDrive(speed,turn);
 		
 		if(Robot.oi.get(OI.Button.SHIFTUP)) {
-			driveSolenoid.set(DoubleSolenoid.Value.kReverse);
+			driveSolenoid.set(DoubleSolenoid.Value.kForward);
+			shift = true;
 		}
 		if(Robot.oi.get(OI.Button.SHIFTDOWN)){
-			driveSolenoid.set(DoubleSolenoid.Value.kForward);
+			driveSolenoid.set(DoubleSolenoid.Value.kReverse);
+			shift = false;
 		}
 		
 	}
-
-	// Sets output on pairs of CANTalons based on the double arguments.
+	
 	
 
 }
