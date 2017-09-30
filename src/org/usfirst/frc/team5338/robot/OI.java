@@ -62,7 +62,7 @@ public class OI {
 		}
 	}
 
-	// Gets double joystick values based on character argument
+	//  Gets double joystick values based on character argument
 	public double getRight(Character input) {
 		switch (input) {
 		case 'X': // Gets deadzone corrected x-axis position

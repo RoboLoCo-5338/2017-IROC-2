@@ -33,11 +33,7 @@ public class DriveTrain extends Subsystem {
 		driveCompressor.start();
 		driveSolenoid.set(DoubleSolenoid.Value.kReverse);
 		shift = false;
-		/*try {
-			SmartDashboard.putString("TYPE OF DRIVE", "ARCADEX");
-		}catch(Exception e) {
-			
-		}*/
+		
 	}
 
 	// Sets the default command to run during teleop to joystick driving.
