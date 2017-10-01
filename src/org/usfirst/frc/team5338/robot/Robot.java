@@ -21,7 +21,6 @@ public class Robot extends IterativeRobot {
 
 	// Robot object constructor.
 	public void robotInit() {
-		//Makes sure that the robot doesn't run any code before the navx is calibrated
 		
 	}
 
