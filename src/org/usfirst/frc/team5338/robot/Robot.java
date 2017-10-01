@@ -21,6 +21,7 @@ public class Robot extends IterativeRobot {
 
 	// Robot object constructor.
 	public void robotInit() {
+		SmartDashboard.putString("TYPE OF DRIVE", "ARCADEX");
 		
 	}
 
