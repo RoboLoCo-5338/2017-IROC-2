@@ -9,7 +9,7 @@ public class OI {
 
 	// Button enum definition for all usable buttons.
 	public enum Button {
-		SHIFTUP, SHIFTDOWN, GEARDOWN, GEARUP
+		SHIFTUP, SHIFTDOWN, GEARINTAKE, GEAROUTPUT, CLIMBER
 	}
 
 	// OI object constructor.
@@ -24,10 +24,12 @@ public class OI {
 			return joyLeft.getRawButton(3);
 		case SHIFTDOWN: // Returns right joystick trigger status
 			return joyLeft.getRawButton(5);
-		case GEARDOWN: // Returns left joystick side button status
+		case GEARINTAKE: // Returns left joystick side button status
 			return joyRight.getRawButton(2);
-		case GEARUP: // Returns right joystick side button status
+		case GEAROUTPUT: // Returns right joystick side button status
 			return joyRight.getRawButton(3);
+		case CLIMBER:
+			return joyRight.getRawButton(5);
 		default:
 			return false;
 		}

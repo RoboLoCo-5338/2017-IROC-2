@@ -3,6 +3,7 @@ package org.usfirst.frc.team5338.robot.subsystems;
 import org.usfirst.frc.team5338.robot.OI;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -11,6 +12,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class gearHandler extends Subsystem {
    
 	private final DoubleSolenoid gearSolenoid = new DoubleSolenoid(5,6);
+	private final Victor wheelMover = new Victor(5);
 	
 	public gearHandler() {
 		super();
@@ -21,11 +23,17 @@ public class gearHandler extends Subsystem {
     }
     
     public void handleGears(OI oi) {
-    		if(oi.get(OI.Button.GEARUP)) {
+    		if(oi.get(OI.Button.GEAROUTPUT)) {
+    			wheelMover.set(0.9);
     			gearSolenoid.set(DoubleSolenoid.Value.kForward);
     		}
-    		if(oi.get(OI.Button.GEARDOWN)) {
+    		else if(oi.get(OI.Button.GEARINTAKE)) {
+    			gearSolenoid.set(DoubleSolenoid.Value.kForward);
+    			wheelMover.set(-0.9);
+    		}
+    		else {
     			gearSolenoid.set(DoubleSolenoid.Value.kReverse);
+    			wheelMover.set(-0.3);
     		}
     }
     
