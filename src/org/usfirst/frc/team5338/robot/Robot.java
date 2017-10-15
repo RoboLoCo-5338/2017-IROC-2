@@ -2,6 +2,7 @@ package org.usfirst.frc.team5338.robot;
 
 import org.usfirst.frc.team5338.robot.commands.Autonomous;
 import org.usfirst.frc.team5338.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team5338.robot.subsystems.gearHandler;
 
 import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -12,17 +13,21 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Robot extends IterativeRobot {
 	// Creates the OI and DriveTrain objects.
+	
 	public static final OI oi = new OI();
 	public static final DriveTrain drivetrain = new DriveTrain();
+	public static final gearHandler gearhandler = new gearHandler();
 
 	//Initializes the Navx
+	public static final AHRS ahrs = new AHRS(SPI.Port.kMXP, (byte) (200));
 	//Creates a Command for Autonomous
 	public static Command Autonomous;
 
 	// Robot object constructor.
 	public void robotInit() {
 		//Makes sure that the robot doesn't run any code before the navx is calibrated
-		
+		while (ahrs.isCalibrating() || ahrs.isMagnetometerCalibrated()) {
+		}
 	}
 
 	// Called at the start of the autonomous activating the command.

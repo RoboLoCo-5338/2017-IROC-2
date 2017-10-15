@@ -20,7 +20,7 @@ public class DriveTrain extends Subsystem {
 	private final CANTalon RIGHT2 = new CANTalon(4);
 	private final Compressor driveCompressor = new Compressor();
 	private final DoubleSolenoid driveSolenoid = new DoubleSolenoid(1,2);
-	RobotDrive driveTrain = new RobotDrive(LEFT1,LEFT2,RIGHT1,RIGHT2);
+	public RobotDrive driveTrain = new RobotDrive(LEFT1,LEFT2,RIGHT1,RIGHT2);
 	private boolean shift;
 	private double turn, speed, left, right;
 	
@@ -50,6 +50,8 @@ public class DriveTrain extends Subsystem {
 				right = Robot.oi.getRight('Y')*Math.abs(Robot.oi.getRight('Y'));
 						
 				driveTrain.tankDrive(-left, -right);
+				
+				if(shift) turn*=.7;
 				break;
 				
 			case "ARCADEX":
@@ -71,10 +73,7 @@ public class DriveTrain extends Subsystem {
 			default:
 				driveTrain.tankDrive(0, 0);
 				break;
-			
-			
 		}
-		
 		
 		if(Robot.oi.get(OI.Button.SHIFTUP)) {
 			driveSolenoid.set(DoubleSolenoid.Value.kForward);
@@ -85,8 +84,8 @@ public class DriveTrain extends Subsystem {
 			shift = false;
 		}
 		
+		
 	}
-	
 	
 
 }

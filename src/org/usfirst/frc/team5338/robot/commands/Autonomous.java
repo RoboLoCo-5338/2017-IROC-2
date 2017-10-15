@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class Autonomous extends CommandGroup {
 
 	public Autonomous() {
-		//Added the TurnAround command to the command group
+		addSequential(new Move(4));
+		addSequential(new TurnAround(45));
 	}
 }
