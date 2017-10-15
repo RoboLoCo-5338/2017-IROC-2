@@ -2,7 +2,7 @@ package org.usfirst.frc.team5338.robot;
 
 import org.usfirst.frc.team5338.robot.commands.Autonomous;
 import org.usfirst.frc.team5338.robot.subsystems.DriveTrain;
-import org.usfirst.frc.team5338.robot.subsystems.gearHandler;
+import org.usfirst.frc.team5338.robot.subsystems.GearHandler;
 
 import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -16,7 +16,7 @@ public class Robot extends IterativeRobot {
 	
 	public static final OI oi = new OI();
 	public static final DriveTrain drivetrain = new DriveTrain();
-	public static final gearHandler gearhandler = new gearHandler();
+	public static final GearHandler gearhandler = new GearHandler();
 
 	//Initializes the Navx
 	public static final AHRS ahrs = new AHRS(SPI.Port.kMXP, (byte) (200));

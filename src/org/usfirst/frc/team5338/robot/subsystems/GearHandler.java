@@ -9,12 +9,12 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-public class gearHandler extends Subsystem {
+public class GearHandler extends Subsystem {
    
 	private final DoubleSolenoid gearSolenoid = new DoubleSolenoid(5,6);
 	private final Victor wheelMover = new Victor(5);
 	
-	public gearHandler() {
+	public GearHandler() {
 		super();
 	}
 
