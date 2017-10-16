@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  *
- */
+ */ 
 public class GearHandler extends Subsystem {
    
 	private final DoubleSolenoid gearSolenoid = new DoubleSolenoid(5,6);

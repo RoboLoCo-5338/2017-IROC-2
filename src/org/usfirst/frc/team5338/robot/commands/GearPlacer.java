@@ -4,14 +4,14 @@ import org.usfirst.frc.team5338.robot.Robot;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
-
+ 
 /**
  *
  */
-public class gearPlacer extends Command {
+public class GearPlacer extends Command {
 	
 
-    public gearPlacer() {
+    public GearPlacer() {
     		requires(Robot.drivetrain);
     		requires(Robot.gearhandler);
         setTimeout(2);
