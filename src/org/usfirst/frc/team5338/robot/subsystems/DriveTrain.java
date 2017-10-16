@@ -35,6 +35,7 @@ public class DriveTrain extends Subsystem {
 		driveSolenoid.set(DoubleSolenoid.Value.kReverse);
 		shift = false;
 		
+		
 	}
 
 	// Sets the default command to run during teleop to joystick driving.

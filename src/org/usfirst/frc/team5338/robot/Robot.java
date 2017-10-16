@@ -28,6 +28,8 @@ public class Robot extends IterativeRobot {
 		//Makes sure that the robot doesn't run any code before the navx is calibrated
 		while (ahrs.isCalibrating() || ahrs.isMagnetometerCalibrated()) {
 		}
+		
+		SmartDashboard.putString("TYPE OF DRIVE", "ARCADEX");
 	}
 
 	// Called at the start of the autonomous activating the command.
