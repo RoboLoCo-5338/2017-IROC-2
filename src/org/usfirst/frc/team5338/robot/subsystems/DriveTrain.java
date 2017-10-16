@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
+ 
 public class DriveTrain extends Subsystem {
 	// Creates the four CANTalon motor controller objects.
 	private final CANTalon LEFT1 = new CANTalon(1);

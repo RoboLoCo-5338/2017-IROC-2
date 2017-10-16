@@ -9,5 +9,6 @@ public class Autonomous extends CommandGroup {
 	public Autonomous() {
 		addSequential(new Move(4));
 		addSequential(new TurnAround(45));
+		addSequential(new GearPlacer());
 	}
 }
