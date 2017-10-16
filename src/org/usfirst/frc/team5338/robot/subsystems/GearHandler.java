@@ -1,5 +1,5 @@
 package org.usfirst.frc.team5338.robot.subsystems;
-  
+   
 import org.usfirst.frc.team5338.robot.OI;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
