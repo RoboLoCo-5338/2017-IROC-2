@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5338.robot;
  
 import org.usfirst.frc.team5338.robot.commands.Autonomous;
+import org.usfirst.frc.team5338.robot.subsystems.Climber;
 import org.usfirst.frc.team5338.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5338.robot.subsystems.GearHandler;
  
@@ -17,6 +18,7 @@ public class Robot extends IterativeRobot {
 	public static final OI oi = new OI();
 	public static final DriveTrain drivetrain = new DriveTrain();
 	public static final GearHandler gearhandler = new GearHandler();
+	public static final Climber climber = new Climber();
 
 	//Initializes the Navx
 	public static final AHRS ahrs = new AHRS(SPI.Port.kMXP, (byte) (200));

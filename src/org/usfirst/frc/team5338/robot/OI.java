@@ -9,7 +9,7 @@ public class OI {
 
 	// Button enum definition for all usable buttons.
 	public enum Button {
-		SHIFTUP, SHIFTDOWN, GEARINTAKE, GEAROUTPUT, CLIMBER
+		SHIFTUP, SHIFTDOWN, GEARINTAKE, GEAROUTPUT, CLIMBERSLOW, CLIMBER
 	}
 
 	// OI object constructor.
@@ -25,11 +25,13 @@ public class OI {
 		case SHIFTDOWN: // Returns right joystick trigger status
 			return joyLeft.getRawButton(5);
 		case GEARINTAKE: // Returns left joystick side button status
-			return joyRight.getRawButton(2);
+			return joyLeft.getRawButton(4);
 		case GEAROUTPUT: // Returns right joystick side button status
-			return joyRight.getRawButton(3);
+			return joyLeft.getRawButton(6);
+		case CLIMBERSLOW:
+			return joyLeft.getRawButton(2);
 		case CLIMBER:
-			return joyRight.getRawButton(5);
+			return joyLeft.getRawButton(1);
 		default:
 			return false;
 		}
@@ -54,7 +56,7 @@ public class OI {
 		case 'Y': // Gets deadzone corrected y-axis position
 			return deadZoneCorrection(joyLeft.getRawAxis(1));
 		case 'Z': // Gets deadzone corrected z-axis (rotation) position
-			return deadZoneCorrection(joyLeft.getRawAxis(3));
+			return deadZoneCorrection(joyLeft.getRawAxis(2));
 		case 'M': // Gets deadzone corrected magnitude away from origin
 			return deadZoneCorrection(joyLeft.getMagnitude());
 		case 'A': // Gets angle of joystick in radians
@@ -72,7 +74,7 @@ public class OI {
 		case 'Y': // Gets deadzone corrected y-axis position
 			return deadZoneCorrection(joyRight.getRawAxis(1));
 		case 'Z': // Gets deadzone corrected z-axis (rotation) position
-			return deadZoneCorrection(joyRight.getRawAxis(3));
+			return deadZoneCorrection(joyRight.getRawAxis(2));
 		case 'M': // Gets deadzone corrected magnitude away from origin
 			return deadZoneCorrection(joyRight.getMagnitude());
 		case 'A': // Gets angle of joystick in radians

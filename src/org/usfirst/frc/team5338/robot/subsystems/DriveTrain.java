@@ -45,6 +45,7 @@ public class DriveTrain extends Subsystem {
 
 	// Gets joysticks input and calls the drive function with arguments.
 	public void drive(OI oi) {
+		
 		//gets the position of both controllers
 		switch(SmartDashboard.getString("TYPE OF DRIVE", "")) {
 			case "TANK":
@@ -58,7 +59,7 @@ public class DriveTrain extends Subsystem {
 				
 			case "ARCADEX":
 				 turn = -Robot.oi.getLeft('X')*Math.abs(Robot.oi.getLeft('X'));
-				 speed = -Robot.oi.getLeft('Y')*Math.abs(Robot.oi.getLeft('Y'));
+				 speed = Robot.oi.getLeft('Y')*Math.abs(Robot.oi.getLeft('Y'));
 				
 				if(shift) turn *= .7;
 						
@@ -66,7 +67,7 @@ public class DriveTrain extends Subsystem {
 				break;
 			case "ARCADEZ":
 				 turn = -Robot.oi.getLeft('Z')*Math.abs(Robot.oi.getLeft('Z'));
-				 speed = -Robot.oi.getLeft('Y')*Math.abs(Robot.oi.getLeft('Y'));
+				 speed = Robot.oi.getLeft('Y')*Math.abs(Robot.oi.getLeft('Y'));
 				
 				if(shift) turn *= .7;
 						
@@ -87,6 +88,10 @@ public class DriveTrain extends Subsystem {
 		}
 		
 		
+	}
+	
+	public void shiftMode(DoubleSolenoid.Value setting) {
+		driveSolenoid.set(setting);
 	}
 	
 
